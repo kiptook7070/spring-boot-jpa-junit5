@@ -1,0 +1,70 @@
+
+server:
+  port: 9092
+
+spring:
+  profiles:
+    active: development
+
+---
+spring:
+  profiles: development
+#  security:
+#    user:
+#      name: user
+#      password: 07f6712b-312d-462b-bcf2-097633a04a80
+
+  datasource:
+    url: jdbc:mariadb://localhost:3306/schooldb
+    username: root
+    password:
+  jpa:
+    show-sql: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+
+---
+spring:
+  profiles: testing
+  security:
+    user:
+      name: user
+      password: 07f6712b-312d-462b-bcf2-097633a04a80
+
+  datasource:
+    url: jdbc:mariadb://localhost:3306/main_office_test_db
+    username: root
+    password:
+  jpa:
+    show-sql: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+
+---
+spring:
+  profiles: production
+  security:
+    user:
+      name: user
+      password: 07f6712b-312d-462b-bcf2-097633a04a80
+
+  datasource:
+    url: jdbc:mariadb://localhost:3306/main_office_prod_db
+    username: root
+    password:
+  jpa:
+    show-sql: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
